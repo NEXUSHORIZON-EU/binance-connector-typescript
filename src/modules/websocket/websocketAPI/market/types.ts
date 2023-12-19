@@ -8,6 +8,8 @@ export interface exchangeInfoOptions {
     symbol?: string;
     symbols?: string[];
     permissions?: string[];
+    id?: string;
+
 }
 
 export interface orderbookOptions {

@@ -16,6 +16,10 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
         this.apiSecret = apiSecret;
     }
 
+    getRandomId(): string {
+        return randomString();
+    }
+
     sendMessageWithAPIKey(method: string, options: Omit<sendMessageOptions, 'timestamp' | 'signature'> = {}) {
         if (!this.isConnected()) {
             console.error('Not connected');
