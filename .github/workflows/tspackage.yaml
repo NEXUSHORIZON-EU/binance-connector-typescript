@@ -2,15 +2,13 @@ name: Typescript CI
 
 on:
   push:
-    branches: [master, rc-*]
-  pull_request:
-    branches: [rc-*]
+    branches: [master, dev]
 
 jobs:
     build:
         strategy:
             matrix:
-              node-version: [16.x, 18.x, 20.x]
+              node-version: [16.x]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -31,3 +29,20 @@ jobs:
 
             - name: Create Bundler files
               run: npm run build
+
+    publish:
+      needs: build
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        packages: write
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+            registry-url: https://npm.pkg.github.com/
+        - run: npm ci
+        - run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
