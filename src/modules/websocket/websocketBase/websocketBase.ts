@@ -51,7 +51,7 @@ export function WebsocketBase<T extends Constructor>(base: T): Constructor<webso
                     console.warn(`Connection close due to ${closeEventCode}: ${reason}.`);
                     setTimeout(() => {
                         console.debug('Reconnect to the server.');
-                        this.initConnect(url);
+                        this.initConnect(url, opt);
                     }, this.reconnectDelay);
                 } else {
                     this.wsConnection.closeInitiated = false;

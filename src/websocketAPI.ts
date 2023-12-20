@@ -36,7 +36,7 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             method,
             params: removeEmptyValue(options)
         };
-        console.debug('Send message to Binance Websocket API Server:', payload);
+        //console.debug('Send message to Binance Websocket API Server:', payload);
         this.send(JSON.stringify(payload));
     }
 
@@ -52,7 +52,7 @@ export class WebsocketAPI extends WebsocketFeaturesBase {
             method,
             params: removeEmptyValue(options)
         };
-        console.debug('Send message to Binance Websocket API Server:', payload);
+        //console.debug('Send message to Binance Websocket API Server:', payload);
         this.send(JSON.stringify(payload));
     }
 

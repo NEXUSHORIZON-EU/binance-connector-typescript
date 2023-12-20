@@ -32,7 +32,7 @@ export interface WebsocketCallbacks {
     close?: () => void;
     ping?: (data?: object) => void;
     pong?: () => void;
-    error?: () => void;
+    error?: (err: Error) => void;
     message?: (data: string) => void;
 }
 
