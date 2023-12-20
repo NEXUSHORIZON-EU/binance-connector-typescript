@@ -1,5 +1,6 @@
 import { AxiosProxyConfig } from 'axios';
 import { WebsocketOptions } from '../modules/websocket/websocketBase/types';
+import WebSocketClient from 'ws';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export type Constructor<T = any> = new (...args: any[]) => T;
@@ -16,6 +17,7 @@ export interface SpotOptions {
 
 export interface WebsocketAPIOptions extends WebsocketOptions {
     wsURL?: string;
+    clientOptions?: WebSocketClient.ClientOptions;
 }
 
 export interface sendMessageOptions {
@@ -28,4 +30,5 @@ export interface sendMessageOptions {
 export interface WebsocketAPIOptions extends WebsocketOptions {
     wsURL?: string;
     combinedStreams?: boolean;
+    clientOptions?: WebSocketClient.ClientOptions;
 }

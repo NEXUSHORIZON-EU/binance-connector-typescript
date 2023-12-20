@@ -9,8 +9,8 @@ export function WebsocketBase<T extends Constructor>(base: T): Constructor<webso
             return true;
         }
 
-        initConnect(url: string) {
-            const ws = new WebSocketClient(url);
+        initConnect(url: string, opt?: WebSocketClient.ClientOptions) {
+            const ws = new WebSocketClient(url, opt);
             console.info(`Sending Websocket connection to: ${url}`);
             this.wsConnection.ws = ws;
             this.wsConnection.closeInitiated = false;

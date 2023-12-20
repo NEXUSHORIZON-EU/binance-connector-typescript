@@ -2,16 +2,19 @@ import * as crypto from 'crypto';
 import { buildQueryString, removeEmptyValue, randomString, sortObject, ObjectType } from './helpers/utils';
 import { WebsocketFeaturesBase } from './setters/mixinBase';
 import { WebsocketAPIOptions, sendMessageOptions } from './setters/types';
+import WebSocketClient from 'ws';
 
 export class WebsocketAPI extends WebsocketFeaturesBase {
     wsURL: string;
     apiKey: string;
     apiSecret: string;
+    clientOptions?: WebSocketClient.ClientOptions;
 
     constructor(apiKey = '', apiSecret = '', options: WebsocketAPIOptions = {}) {
         super(apiKey, apiSecret, options);
         this.wsURL = options.wsURL || 'wss://ws-api.binance.com:443/ws-api/v3';
-        this.initConnect(this.wsURL);
+        this.clientOptions = options.clientOptions || {};
+        this.initConnect(this.wsURL, this.clientOptions);
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
     }

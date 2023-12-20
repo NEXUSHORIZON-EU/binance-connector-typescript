@@ -3,7 +3,7 @@ import WebSocketClient from 'ws';
 
 export interface websocketBaseMethods {
     isConnected(): boolean;
-    initConnect(url: string): void;
+    initConnect(url: string, opt?: WebSocketClient.ClientOptions): void;
     disconnect(): void;
     pingServer(): void;
     send(payload: BufferLike): void;
@@ -43,5 +43,6 @@ export interface WebsocketConnection {
 
 export interface WebsocketOptions {
     reconnectDelay?: number;
+    clientOptions?: WebSocketClient.ClientOptions;
     callbacks?: WebsocketCallbacks;
 }
