@@ -44,7 +44,6 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
                 id: Date.now()
             };
 
-            console.info('SUBSCRIBE', payload);
             this.send(JSON.stringify(payload));
         }
     }
@@ -63,7 +62,6 @@ export class WebsocketStream extends WebsocketStreamFeaturesBase {
                 params: stream,
                 id: Date.now()
             };
-            console.info('UNSUBSCRIBE', payload);
             this.send(JSON.stringify(payload));
         }
     }
